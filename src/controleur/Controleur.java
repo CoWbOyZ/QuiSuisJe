@@ -151,13 +151,15 @@ public class Controleur {
 	 * @return le nouveau choix frappé au clavier, -1 si la partie est terminée
 	 */
 	private int proposerIdentite(int choixMenuJoueurActif,	String titreJoueurActif, Joueur joueurActif){
-		int choix = -1;
+		int choix = Controleur.MENU_PRINCIPAL;
 		String proposition = getNom();
 		
 		//Si la proposition du joueur actif correspond à son identité, sinon
-		if (proposition == joueurActif.getIdentite()) {
+		if (joueurActif.isIdentiteTrouve(proposition)) {
+			System.out.println("IDENTITE TROUVEE");
 			joueurActif.gererIdTrouvee();
 		} else {
+			System.out.println("CE NEST PAS CA");
 			joueurActif.compterTentative();
 		}
 		
@@ -203,10 +205,10 @@ public class Controleur {
 				break;
 
 			case PROPOSER_IDENTITE_J1 :
-				choix= this.proposerIdentite(Controleur.LIRE_IDENTITE_J1,"Joueur1",joueur1);
+				choix= this.proposerIdentite(Controleur.MENU_PRINCIPAL,"Joueur1",joueur1);
 				break;
 			case PROPOSER_IDENTITE_J2 : 
-				choix= this.proposerIdentite(Controleur.LIRE_IDENTITE_J2,"Joueur2",joueur2);
+				choix= this.proposerIdentite(Controleur.MENU_PRINCIPAL,"Joueur2",joueur2);
 				break;
 
 			case MENU_SCORES : //Afficher Scores
@@ -219,6 +221,7 @@ public class Controleur {
 				Menu.afficheMsg("nouvelle partie");
 				choix = this.getChoix(Controleur.MENU_PRINCIPAL);
 				break;
+				
 			case MENU_NOUVEAUX_PERSONNAGES : //on change les personnages
 				//TODO
 				Menu.afficheMsg("nouvelles identités attribuées");
@@ -249,9 +252,8 @@ public class Controleur {
 	 * idée : Vous pouvez essayer de passer ce message par une petite fenetre (utiliser affMsgBox).
 	 */
 	private void afficherScores(){
-		//TODO
-		//menu.afficheMsg("score du joueur 1 = "+joueur1.getScore());
-		//menu.afficheMsg("score du joueur 2 = "+joueur2.getScore());
+		Menu.afficheMsg("score du joueur 1 = "+joueur1.getScore());
+		Menu.afficheMsg("score du joueur 2 = "+joueur2.getScore());
 	}
 
 

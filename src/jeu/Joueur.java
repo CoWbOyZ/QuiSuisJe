@@ -46,7 +46,7 @@ public class Joueur {
 	 * et affecte une nouvelle identité au joueur
 	 */
 	public void gererIdTrouvee() {
-		score += TROUVE_ID;
+		this.score += TROUVE_ID;
 		setNouvelleIdentite();
 	}
 
@@ -54,7 +54,7 @@ public class Joueur {
 	 * Compter une tentative râtée de découverte de sa propre identité
 	 */
 	public void compterTentative() {
-		score += COUT_ESSAI;
+		this.score += COUT_ESSAI;
 	}
 
 	/**
@@ -65,12 +65,8 @@ public class Joueur {
 	 */
 	public boolean isIdentiteTrouve(String proposition) {
 		boolean rep=false;
-		if (proposition == identite) {
+		if (proposition.equals(identite)) {
 			rep = true;
-			compterTentative();
-			gererIdTrouvee();
-		} else {
-			compterTentative();
 		}
 		return rep;
 	}
