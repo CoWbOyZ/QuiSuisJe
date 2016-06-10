@@ -151,7 +151,7 @@ public class Controleur {
 	 * @return le nouveau choix frappé au clavier, -1 si la partie est terminée
 	 */
 	private int proposerIdentite(int choixMenuJoueurActif,	String titreJoueurActif, Joueur joueurActif){
-		int choix = Controleur.MENU_PRINCIPAL;
+		int choix = this.getChoix(Controleur.MENU_PRINCIPAL);
 		String proposition = getNom();
 		
 		//Si la proposition du joueur actif correspond à son identité, sinon
